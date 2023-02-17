@@ -1,0 +1,141 @@
+---
+openapi: 3.0.3
+info:
+  title: API AUTHORS
+  contact:
+    name: Example API Support
+    email: techsupport@example.com
+  license:
+    name: API
+    url: http://localhost:8080
+  version: 1.0.1
+tags:
+- name: AUTHORS
+  description: authors
+- name: Authors Rest
+  description: API Author
+paths:
+  /authors:
+    get:
+      tags:
+      - Authors Rest
+      summary: Lista de authores
+      description: Obtiene los authors
+      operationId: Obtener todos los autores
+      responses:
+        "200":
+          description: Completada
+          content:
+            application/json: {}
+        "400":
+          description: MÃ©todo invalido
+          content:
+            application/json: {}
+    post:
+      tags:
+      - Authors Rest
+      summary: Se inserta un author
+      description: Se ingresa un nuevo author
+      operationId: Insertar Author
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+      responses:
+        "204":
+          description: Author Insertado
+          content:
+            application/json: {}
+        "400":
+          description: MÃ©todo invalido
+          content:
+            application/json: {}
+  /authors/{id}:
+    get:
+      tags:
+      - Authors Rest
+      summary: Author
+      description: Obtiene un author
+      operationId: Obtener un Author
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "200":
+          description: Completada
+          content:
+            application/json: {}
+        "400":
+          description: Metodo invalido
+          content:
+            application/json: {}
+    put:
+      tags:
+      - Authors Rest
+      summary: Actualiza el author
+      description: Se actualiza un author
+      operationId: Actualizar author
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+      responses:
+        "204":
+          description: Author Actualizado
+          content:
+            application/json: {}
+        "400":
+          description: Metodo innvalido
+          content:
+            application/json: {}
+    delete:
+      tags:
+      - Authors Rest
+      summary: Borrar un author
+      description: Se a borrado un author
+      operationId: Borrar Author
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        "204":
+          description: Author Borrado
+          content:
+            application/json: {}
+        "400":
+          description: Metodo invalido
+          content:
+            application/json: {}
+components:
+  schemas:
+    Author:
+      description: Pojo Authores
+      required:
+      - firtName
+      - lastName
+      type: object
+      properties:
+        id:
+          format: int64
+          type: integer
+        firtName:
+          type: string
+        lastName:
+          type: string

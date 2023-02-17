@@ -1,0 +1,38 @@
+openapi: 3.0.3
+info:
+  title: My API
+  version: 1.0.0
+paths:
+  /books:
+    get:
+      tags:
+        - Books Rest
+      summary: Lista de libros
+      description: Obtiene los libros
+      operationId: Obtener todos los libros
+      responses:
+        "200":
+          description: Completada
+          content:
+            application/json: {}
+        "400":
+          description: metodo invalido
+          content:
+            application/json: {}
+
+components:
+  schemas:
+    Author:
+      description: Pojo Books
+      properties:
+        id:
+          format: int64
+          type: integer
+        isbn:
+          type: string
+        title:
+          type: string
+        author:
+          type: string
+        price:
+          type: number
